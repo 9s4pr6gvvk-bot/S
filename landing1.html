@@ -60,7 +60,7 @@ h1,h2,h3{font-family:'Lora',serif;font-weight:600;letter-spacing:-.01em;line-hei
 .topbar-inner{max-width:var(--max);margin:0 auto;padding:.9rem var(--side);display:flex;align-items:center;justify-content:space-between}
 .t-brand{display:flex;align-items:center;gap:1rem}
 .t-div{width:1px;height:1.3rem;background:rgba(196,149,106,.3);flex-shrink:0}
-.t-name{font-family:'Lora',serif;font-size:1.15rem;font-weight:600;color:#fff;letter-spacing:.01em;line-height:1}
+.t-name{font-family:'Lora',serif;font-size:1.15rem;font-weight:600;color:#fff;letter-spacing:.01em;line-height:1;white-space:nowrap}
 .t-tag{font-family:'Quicksand',sans-serif;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(196,149,106,.6)}
 .t-right{font-family:'Quicksand',sans-serif;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.2)}
 
@@ -195,8 +195,8 @@ h1,h2,h3{font-family:'Lora',serif;font-weight:600;letter-spacing:-.01em;line-hei
 }
 @media(max-width:520px){
   .inc-grid{grid-template-columns:1fr}
-  .topbar-inner{flex-wrap:wrap;justify-content:center;gap:.6rem}
-  .t-right{display:none}
+  .topbar-inner{justify-content:flex-start}
+  .t-div,.t-tag{display:none}
   .wa-btn{font-size:12px}
   .f-inner{flex-direction:column;align-items:flex-start;gap:.5rem}
 }

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sing Like No One Else — Artist 360°</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Quicksand:wght@500;600;700&family=Karla:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+body{background:#F0EEEA;color:#1A1A18;font-family:'Karla',sans-serif;font-weight:400;font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+:root{
+  --bg:#F0EEEA;
+  --bg2:#E6E3DE;
+  --gold:#C4956A;
+  --gold-l:#D4A87C;
+  --gold-pale:#EDD5B3;
+  --ink:#1A1A18;
+  --mid:#3A3530;
+  --muted:#7A746E;
+  --dark:#141210;
+  --dark2:#1E1A16;
+  --line:#D0CBC4;
+  --side:clamp(2rem,7vw,8rem);
+  --max:1120px;
+  --prose:760px;
+}
+
+/* ── LAYOUT ── */
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--side);padding-right:var(--side)}
+.pad{padding:clamp(5rem,9vw,8rem) 0}
+.pad-sm{padding:clamp(3.5rem,6vw,5rem) 0}
+
+/* ── TYPE ── */
+h1,h2,h3{font-family:'Lora',serif;font-weight:600;letter-spacing:-.01em;line-height:1.05}
+.eyebrow{font-family:'Quicksand',sans-serif;font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:11.5px;color:var(--gold);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';display:block;width:28px;height:1.5px;background:var(--gold);opacity:.6;flex-shrink:0}
+.eyebrow-light{color:rgba(196,149,106,.65)}
+.eyebrow-light::before{opacity:.4}
+.prose-block{font-size:17px;color:var(--mid);line-height:1.85}
+.prose-block p+p{margin-top:1.1rem}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.8rem;font-family:'Quicksand',sans-serif;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:14px 28px;border-radius:999px;cursor:pointer;border:none;transition:all .22s;text-decoration:none}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:var(--gold-l);transform:translateY(-1px);box-shadow:0 8px 24px -8px rgba(196,149,106,.45)}
+.btn-dark{background:var(--dark);color:#fff}
+.btn-dark:hover{background:#2A2520;transform:translateY(-1px)}
+.btn-outline{background:transparent;border:2px solid rgba(196,149,106,.4);color:var(--gold)}
+.btn-outline:hover{background:rgba(196,149,106,.08);border-color:var(--gold)}
+.btn svg{flex-shrink:0;width:17px;height:17px}
+
+/* ── TOP BAR ── */
+#topbar{background:var(--dark);border-bottom:1px solid rgba(196,149,106,.1);position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.topbar-inner{max-width:var(--max);margin:0 auto;padding:.9rem var(--side);display:flex;align-items:center;justify-content:space-between}
+.t-brand{display:flex;align-items:center;gap:1rem}
+.t-div{width:1px;height:1.3rem;background:rgba(196,149,106,.3);flex-shrink:0}
+.t-name{font-family:'Lora',serif;font-size:1.15rem;font-weight:600;color:#fff;letter-spacing:.01em;line-height:1}
+.t-tag{font-family:'Quicksand',sans-serif;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(196,149,106,.6)}
+.t-right{font-family:'Quicksand',sans-serif;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+
+/* ── HERO ── */
+#hero{background:var(--dark);position:relative;overflow:hidden}
+#hero::after{content:'';position:absolute;top:0;right:0;width:45%;height:100%;background:radial-gradient(ellipse at 80% 40%,rgba(196,149,106,.07) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:var(--max);margin:0 auto;padding:clamp(4rem,8vw,7rem) var(--side) clamp(4rem,7vw,6rem);display:grid;grid-template-columns:2fr 3fr;grid-template-rows:auto auto;gap:clamp(1.5rem,3vw,2.5rem) clamp(3rem,6vw,7rem)}
+.hero-l{position:relative;z-index:1;grid-column:1;grid-row:1/3;display:flex;flex-direction:column;justify-content:flex-start;padding-top:.5rem}
+.hero-eyebrow{margin-bottom:1.2rem}
+.hero-hed{font-family:'Lora',serif;font-weight:600;font-size:clamp(2.3rem,4.4vw,4.8rem);line-height:.97;letter-spacing:-.02em;color:#fff}
+.hero-hed em{font-style:italic;color:var(--gold-l);font-weight:400}
+/* Video — top right */
+.hero-video{position:relative;z-index:1;grid-column:2;grid-row:1;width:100%;aspect-ratio:16/9;background:#0B0908;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+.hero-v-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem}
+.hero-v-ring{width:64px;height:64px;border:1.5px solid rgba(196,149,106,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color .25s,background .25s;cursor:pointer}
+.hero-v-ring:hover{border-color:rgba(196,149,106,.8);background:rgba(196,149,106,.07)}
+.hero-v-cap{font-family:'Quicksand',sans-serif;font-weight:600;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.18)}
+/* Copy + button — bottom right */
+.hero-r{position:relative;z-index:1;grid-column:2;grid-row:2;display:flex;flex-direction:column;justify-content:flex-start;gap:1.8rem}
+.hero-sub{font-family:'Karla',sans-serif;font-style:italic;font-size:17px;color:rgba(255,255,255,.45);line-height:1.8;border-left:2px solid rgba(196,149,106,.22);padding-left:1.4rem}
+.hero-actions{display:flex;align-items:flex-start}
+
+/* ── GOLD STRIP ── */
+.g-strip{height:3px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-pale) 50%,var(--gold) 100%)}
+
+/* ── STATEMENT ── */
+#statement{background:var(--dark2)}
+.stmt-inner{max-width:var(--max);margin:0 auto;padding:clamp(5rem,9vw,8rem) var(--side);display:grid;grid-template-columns:3fr 2fr;gap:clamp(3rem,6vw,7rem);align-items:center}
+.stmt-hed{font-family:'Lora',serif;font-weight:600;font-size:clamp(1.8rem,3.8vw,3.6rem);line-height:.98;letter-spacing:-.015em;color:#fff}
+.stmt-hed em{font-style:italic;color:var(--gold-l);font-weight:400}
+.stmt-r{border-left:1px solid rgba(196,149,106,.15);padding-left:clamp(2rem,4vw,4rem)}
+.stmt-sub{font-family:'Karla',sans-serif;font-style:italic;font-size:18px;color:rgba(255,255,255,.35);line-height:1.9}
+
+/* ── REALITY ── */
+#reality{background:var(--bg)}
+.r-inner{max-width:var(--max);margin:0 auto;padding:clamp(5rem,9vw,8rem) var(--side);display:grid;grid-template-columns:5fr 3fr;gap:clamp(3rem,6vw,7rem);align-items:start}
+.r-dash{display:block;width:2rem;height:2px;background:var(--gold);opacity:.5;margin:2.4rem 0}
+.r-pull{font-family:'Lora',serif;font-style:italic;font-weight:400;font-size:clamp(1.25rem,2.2vw,1.65rem);line-height:1.5;color:var(--ink);margin:2.4rem 0;padding:1.6rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.r-aside{position:sticky;top:5rem;background:#fff;border-top:3px solid var(--gold);padding:2rem;box-shadow:0 12px 40px -16px rgba(26,26,24,.12)}
+.r-aside-label{font-family:'Quicksand',sans-serif;font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:1.2rem}
+.r-aside-quote{font-family:'Lora',serif;font-style:italic;font-size:1.15rem;color:var(--ink);line-height:1.65}
+.r-aside-dash{display:block;width:1.6rem;height:1.5px;background:var(--gold);opacity:.4;margin:1.4rem 0 1rem}
+.r-aside-attr{font-family:'Quicksand',sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* ── MENTORING ── */
+#mentoring{background:#E8C9A8}
+.m-inner{max-width:var(--max);margin:0 auto;padding:clamp(5rem,9vw,8rem) var(--side)}
+.m-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,7rem);align-items:start;padding-bottom:clamp(3rem,5vw,5rem);margin-bottom:clamp(3rem,5vw,5rem);border-bottom:1px solid rgba(26,26,24,.1)}
+.m-hed{font-family:'Lora',serif;font-weight:600;font-size:clamp(2rem,4.5vw,3.8rem);line-height:.98;letter-spacing:-.015em;color:var(--ink);margin-top:.8rem}
+.m-hed em{font-style:italic;font-weight:400}
+.m-dash{display:block;width:2rem;height:2px;background:rgba(26,26,24,.2);margin:1.6rem 0 0}
+.m-prose{font-size:17px;color:var(--mid);line-height:1.85}
+.m-prose p+p{margin-top:1rem}
+
+/* ── INCLUDES ── */
+#includes{background:var(--dark)}
+.inc-inner{max-width:var(--max);margin:0 auto;padding:clamp(5rem,9vw,8rem) var(--side)}
+.inc-top{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,7rem);align-items:end;margin-bottom:clamp(3rem,5vw,4rem)}
+.inc-hed{font-family:'Lora',serif;font-weight:600;font-size:clamp(1.8rem,3.5vw,3rem);line-height:1;letter-spacing:-.01em;color:#fff;margin-top:.8rem}
+.inc-intro{font-family:'Karla',sans-serif;font-style:italic;font-size:17px;color:rgba(240,238,234,.38);line-height:1.9}
+.inc-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.07);border-left:1px solid rgba(255,255,255,.07)}
+.inc-item{padding:1.8rem 1.6rem;border-right:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:.7rem;transition:background .2s}
+.inc-item:hover{background:rgba(255,255,255,.03)}
+.inc-num{font-family:'Lora',serif;font-style:italic;font-size:1.5rem;font-weight:400;color:rgba(196,149,106,.22);line-height:1}
+.inc-text{font-family:'Karla',sans-serif;font-size:15px;color:rgba(240,238,234,.55);line-height:1.6}
+
+/* ── HOW WE WORK ── */
+#how{background:var(--bg2)}
+.how-inner{max-width:var(--max);margin:0 auto;padding:clamp(5rem,9vw,8rem) var(--side);display:grid;grid-template-columns:5fr 3fr;gap:clamp(3rem,6vw,7rem);align-items:start}
+.hw-hed{font-family:'Lora',serif;font-weight:600;font-size:clamp(2rem,4vw,3.4rem);line-height:.98;letter-spacing:-.015em;color:var(--ink);margin-top:.8rem}
+.hw-dash{display:block;width:2rem;height:2px;background:var(--gold);opacity:.5;margin:1.8rem 0 2rem}
+.hw-prose{font-size:17px;color:var(--mid);line-height:1.85}
+.hw-prose p+p{margin-top:1.1rem}
+.hw-closing{margin-top:2.6rem;padding:1.8rem 1.8rem 1.8rem 1.6rem;background:var(--bg);border-left:3px solid var(--gold)}
+.hw-closing p{font-family:'Lora',serif;font-style:italic;font-size:1.15rem;color:var(--ink);line-height:1.7}
+.hw-closing p+p{margin-top:.5rem}
+.hw-aside{position:sticky;top:5rem}
+.hw-aside-card{background:#fff;border-top:3px solid var(--gold);padding:2rem;box-shadow:0 12px 40px -16px rgba(26,26,24,.1)}
+.hw-aside-title{font-family:'Quicksand',sans-serif;font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.8rem}
+.hw-aside-card p{font-size:15px;color:var(--mid);line-height:1.8}
+
+/* ── CTA ── */
+#cta{background:var(--gold);padding:3px 0}
+.cta-bg{background:var(--dark)}
+.cta-inner{max-width:var(--max);margin:0 auto;padding:clamp(5rem,10vw,9rem) var(--side);display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,7vw,8rem);align-items:start}
+.cta-label{margin-bottom:1.4rem}
+.cta-hed{font-family:'Lora',serif;font-weight:600;font-size:clamp(2.2rem,5vw,4.5rem);line-height:.98;letter-spacing:-.015em;color:#fff;margin-bottom:2.4rem}
+.cta-hed em{font-style:italic;font-weight:400;color:var(--gold-l)}
+.cta-prose{font-size:17px;color:rgba(240,238,234,.5);line-height:1.9}
+.cta-prose p+p{margin-top:1rem}
+.cta-sign{font-family:'Lora',serif;font-style:italic;font-size:1.5rem;color:rgba(196,149,106,.5);display:block;margin-top:2rem}
+
+/* WA CARD */
+.wa-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:2.8rem;border-radius:4px}
+.wa-card-eyebrow{margin-bottom:1.4rem}
+.wa-card-hed{font-family:'Lora',serif;font-weight:600;font-size:1.65rem;color:#fff;line-height:1.15;margin-bottom:.6rem}
+.wa-card-sub{font-size:15px;color:rgba(240,238,234,.35);line-height:1.8;margin-bottom:2.4rem}
+.wa-btn{display:flex;align-items:center;justify-content:center;gap:1rem;background:var(--gold);color:#fff;font-family:'Quicksand',sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:16px 24px;border-radius:999px;transition:all .22s;border:none;cursor:pointer;text-decoration:none;width:100%}
+.wa-btn:hover{background:var(--gold-l);transform:translateY(-1px);box-shadow:0 10px 28px -8px rgba(196,149,106,.5)}
+.wa-btn svg{flex-shrink:0}
+.wa-num{display:block;font-family:'Quicksand',sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;color:rgba(255,255,255,.2);text-align:center;margin-top:1rem}
+
+/* ── FOOTER ── */
+#footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding:clamp(2.5rem,4vw,3.5rem) var(--side)}
+.f-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.f-brand{font-family:'Lora',serif;font-size:1rem;color:rgba(255,255,255,.22);font-weight:400}
+.f-copy{font-family:'Quicksand',sans-serif;font-size:12px;letter-spacing:.06em;color:rgba(255,255,255,.14)}
+.f-credit{font-family:'Quicksand',sans-serif;font-size:12px;letter-spacing:.06em;color:rgba(255,255,255,.18)}
+.f-credit a{color:rgba(255,255,255,.18);transition:color .18s}
+.f-credit a:hover{color:rgba(255,255,255,.5)}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;grid-template-rows:auto;gap:2rem}
+  .hero-l{grid-column:1;grid-row:1}
+  .hero-video{grid-column:1;grid-row:2}
+  .hero-r{grid-column:1;grid-row:3}
+  .stmt-inner,.how-inner,.cta-inner{grid-template-columns:1fr;gap:2.8rem}
+  .r-inner{grid-template-columns:1fr;gap:0}
+  .r-aside{position:static;margin-top:3rem}
+  .m-head{grid-template-columns:1fr;gap:2rem}
+  .inc-top{grid-template-columns:1fr;gap:1.6rem}
+  .inc-grid{grid-template-columns:repeat(2,1fr)}
+  .hw-aside{display:none}
+  .cta-inner{grid-template-columns:1fr}
+  .hero-r{padding-top:2rem}
+}
+@media(max-width:520px){
+  .inc-grid{grid-template-columns:1fr}
+  .topbar-inner{flex-wrap:wrap;justify-content:center;gap:.6rem}
+  .t-right{display:none}
+  .wa-btn{font-size:12px}
+  .f-inner{flex-direction:column;align-items:flex-start;gap:.5rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topbar">
+  <div class="topbar-inner">
+    <div class="t-brand">
+      <span class="t-name">Sing Like No One Else</span>
+      <div class="t-div"></div>
+      <span class="t-tag">Olivia Hyde · Artist Mentorship</span>
+    </div>
+    <span class="t-right">Artist 360°</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+
+    <!-- LEFT — title spanning full height -->
+    <div class="hero-l">
+      <div class="hero-eyebrow rv">
+        <span class="eyebrow eyebrow-light">Artist 360°</span>
+      </div>
+      <h1 class="hero-hed rv d1">For Artists<br>With <em>Something</em><br><em>Real</em> To Say</h1>
+    </div>
+
+    <!-- TOP RIGHT — video -->
+    <div class="hero-video rv d1">
+      <div class="hero-v-inner">
+        <div class="hero-v-ring">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(196,149,106,.65)" stroke-width="1.5" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <span class="hero-v-cap">Video coming soon</span>
+      </div>
+    </div>
+
+    <!-- BOTTOM RIGHT — copy + button -->
+    <div class="hero-r rv d2">
+      <p class="hero-sub">Technical development, creative direction and honest mentorship for original artists and bands with something real to say.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-gold">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Book a Free Consultation
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="g-strip"></div>
+
+<!-- STATEMENT -->
+<section id="statement">
+  <div class="stmt-inner">
+    <div class="rv">
+      <p class="stmt-hed">Making original music<br>can be <em>exhilarating.</em><br>It can also be <em>brutal.</em></p>
+    </div>
+    <div class="stmt-r rv d1">
+      <p class="stmt-sub">It asks a lot of you — creatively, emotionally and psychologically.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REALITY -->
+<section id="reality">
+  <div class="r-inner">
+    <div>
+      <div class="prose-block rv">
+        <p>You are expected to make work that is personal, vulnerable and true, then place it in front of the world and somehow stay steady while people ignore it, misunderstand it, admire it, tear it apart or project onto you.</p>
+        <p>Add rejection, self-doubt, online pressure, bullying, sexism, racism, homophobia and the strange modern expectation that every artist must also become a content machine, and it is no wonder so many talented people lose confidence, lose direction or lose touch with why they started.</p>
+      </div>
+      <p class="r-pull rv">I understand that world.</p>
+      <div class="prose-block rv">
+        <p>I'm a singer-songwriter with over ten years of experience fronting a band, alongside years of hands-on work in songwriting, singing, performance, arranging, production, branding, marketing and visual direction.</p>
+        <p>I know what it is to build something from the ground up. To wear every hat. To keep going when things are difficult. To try to protect the thing that made you want to do this in the first place.</p>
+      </div>
+      <span class="r-dash rv"></span>
+      <div class="prose-block rv">
+        <p>My mentorship programmes are not just about becoming a better singer, songwriter or performer.</p>
+        <p>They are about becoming stronger, clearer and more resilient as an artist.</p>
+        <p>Because becoming the best artist you can be is not only about technique. It is also about understanding yourself, trusting your instincts, finding your voice and learning how to stay with yourself when things get hard.</p>
+      </div>
+    </div>
+    <div class="r-aside rv d1">
+      <span class="r-aside-label">Olivia Hyde</span>
+      <p class="r-aside-quote">I know what it is to build something from the ground up. To wear every hat. To keep going when things are difficult.</p>
+      <span class="r-aside-dash"></span>
+      <span class="r-aside-attr">Singer · Songwriter · Mentor</span>
+    </div>
+  </div>
+</section>
+
+<!-- MENTORING -->
+<section id="mentoring">
+  <div class="m-inner">
+    <div class="m-head">
+      <div class="rv">
+        <span class="eyebrow">The Mentorship</span>
+        <h2 class="m-hed">Mentoring Built<br><em>Around You</em></h2>
+        <span class="m-dash"></span>
+      </div>
+      <div class="m-prose rv d1">
+        <p>No two artists are the same, so no two programmes are the same either.</p>
+        <p>We will build your mentorship around your strengths, your weaknesses, your goals and the areas where you need the most support.</p>
+        <p>You may want to focus on one specific area, or you may need a mixture of support across several.</p>
+      </div>
+    </div>
+    <div class="rv">
+      <a href="#cta" class="btn btn-dark">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Book a Free Consultation
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section id="includes">
+  <div class="inc-inner">
+    <div class="inc-top">
+      <div class="rv">
+        <span class="eyebrow eyebrow-light">That Might Include</span>
+        <h2 class="inc-hed">Support across every<br>area of your artistry</h2>
+      </div>
+      <p class="inc-intro rv d1">Sometimes what an artist needs is technical help. Sometimes it is creative direction. Sometimes it is emotional support. Often, it is all of the above.</p>
+    </div>
+    <div class="inc-grid">
+      <div class="inc-item rv"><span class="inc-num">01</span><span class="inc-text">Vocal technique and confidence</span></div>
+      <div class="inc-item rv d1"><span class="inc-num">02</span><span class="inc-text">Songwriting and lyrical development</span></div>
+      <div class="inc-item rv d1"><span class="inc-num">03</span><span class="inc-text">Performance and stagecraft</span></div>
+      <div class="inc-item rv d2"><span class="inc-num">04</span><span class="inc-text">Artistic identity and creative direction</span></div>
+      <div class="inc-item rv"><span class="inc-num">05</span><span class="inc-text">Branding, visuals and image</span></div>
+      <div class="inc-item rv d1"><span class="inc-num">06</span><span class="inc-text">Marketing and social media strategy</span></div>
+      <div class="inc-item rv d1"><span class="inc-num">07</span><span class="inc-text">Navigating fear, rejection and self-doubt</span></div>
+      <div class="inc-item rv d2"><span class="inc-num">08</span><span class="inc-text">Staying connected to your purpose as an artist</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section id="how">
+  <div class="how-inner">
+    <div>
+      <span class="eyebrow rv">How We Work</span>
+      <h2 class="hw-hed rv d1">How We Work</h2>
+      <span class="hw-dash rv"></span>
+      <div class="hw-prose rv">
+        <p>We begin with a free consultation so I can get a sense of where you are, where you want to go and what kind of support would genuinely help.</p>
+        <p>From there, we build something around you.</p>
+        <p>I do not do empty hype or false promises. Anyone guaranteeing to "make you a star" should be treated with the disdain they deserve.</p>
+        <p>What I do offer is honest guidance, practical tools, real-world experience and support from someone who understands both the craft and the cost of trying to do this properly.</p>
+      </div>
+      <div class="hw-closing rv">
+        <p>This is for artists who want to grow without losing themselves.</p>
+        <p>Artists who want to make something real.</p>
+        <p>Artists who know there is more in them and need the right support to bring it out.</p>
+      </div>
+      <a href="#cta" class="btn btn-gold rv" style="margin-top:2.4rem">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Book a Free Consultation
+      </a>
+    </div>
+    <div class="hw-aside rv d1">
+      <div class="hw-aside-card">
+        <span class="hw-aside-title">A free conversation</span>
+        <p>We begin with a free consultation — no pressure, no obligation. Just an honest conversation about where you are and what kind of support would genuinely help.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div id="cta">
+  <div class="cta-bg">
+    <div class="cta-inner">
+      <div class="rv">
+        <span class="eyebrow eyebrow-light cta-label">Free Consultation</span>
+        <h2 class="cta-hed">Book a Free<br><em>Consultation</em></h2>
+        <div class="cta-prose">
+          <p>Consultations are free.</p>
+          <p>Leave your contact details below and I will get back to you as soon as I can.</p>
+          <p>We can talk about your goals, where you feel stuck, what you are trying to build and what kind of support would help you move forward with more clarity, confidence and strength.</p>
+          <p>Let's build a programme that fits you — and helps you create something real.</p>
+        </div>
+        <span class="cta-sign">Olivia x</span>
+      </div>
+      <div class="rv d1">
+        <div class="wa-card">
+          <span class="eyebrow eyebrow-light wa-card-eyebrow">Get in touch</span>
+          <p class="wa-card-hed">Message Olivia<br>on WhatsApp</p>
+          <p class="wa-card-sub">Tap the button below to start a WhatsApp conversation directly with Olivia. She will get back to you as soon as she can.</p>
+          <a href="https://wa.me/447960887546?text=Hi%20Olivia%2C%20I%27d%20love%20to%20find%20out%20more%20about%20the%20Artist%20360%20mentorship." class="wa-btn">
+            <svg width="20" height="20" viewBox="0 0 175.216 175.552" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+              <path d="M87.6 0C39.3 0 0 39.3 0 87.6c0 15.6 4.1 30.2 11.3 42.9L0 175.6l46.5-12.2c12.2 6.6 26.2 10.4 41.1 10.4 48.3 0 87.6-39.3 87.6-87.6S135.9 0 87.6 0zm0 160.2c-14 0-27-3.8-38.2-10.5l-2.7-1.6-28.1 7.4 7.5-27.4-1.7-2.8C17.8 114.4 14 101.4 14 87.6 14 47.1 47.1 14 87.6 14s73.6 33.1 73.6 73.6-33.1 72.6-73.6 72.6zm40.4-54.4c-2.2-1.1-13-6.4-15-7.1-2-.7-3.4-1.1-4.9 1.1-1.4 2.2-5.5 7.1-6.8 8.5-1.2 1.5-2.5 1.7-4.7.6-2.2-1.1-9.3-3.4-17.7-10.9-6.5-5.8-10.9-13-12.2-15.2-1.2-2.2-.1-3.3 1-4.4 1-1 2.2-2.5 3.3-3.8 1.1-1.2 1.5-2.2 2.2-3.6.7-1.5.4-2.7-.2-3.8-.6-1.1-4.9-11.7-6.7-16-1.8-4.2-3.5-3.6-4.9-3.7-1.2-.1-2.7-.1-4.1-.1-1.4 0-3.8.5-5.8 2.7-2 2.2-7.7 7.5-7.7 18.2 0 10.8 7.9 21.2 9 22.6 1.1 1.5 15.5 23.6 37.6 33.1 5.3 2.3 9.4 3.6 12.6 4.6 5.3 1.7 10.1 1.4 13.9.9 4.2-.6 13-5.3 14.8-10.4 1.9-5.1 1.9-9.5 1.3-10.4-.5-.9-2-1.5-4.2-2.6z"/>
+            </svg>
+            Message on WhatsApp
+          </a>
+          <span class="wa-num">07960 887546</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="f-inner">
+    <span class="f-brand">Sing Like No One Else</span>
+    <span class="f-copy">© 2026 Olivia Hyde · All rights reserved.</span>
+    <span class="f-credit"><a href="https://www.franks-media.co.uk" target="_blank" rel="noopener">Website by Franks Media</a></span>
+  </div>
+</footer>
+
+<script>
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});
+},{threshold:0.06,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
